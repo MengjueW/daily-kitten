@@ -1,1 +1,1 @@
-# daily-kitten
+# Daily Kitten
