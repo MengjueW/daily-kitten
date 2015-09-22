@@ -1,40 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <% @links.each do |link| %>
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+      <%= link_to image_tag(link.url, :class => 'img-responsive'), link, class: "thumbnail"%>
 
-<h1>Listing Links</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @links.each do |link| %>
-      <tr>
-        <td><%= link.title %></td>
-        <td><%= link.url %></td>
-        <td><%= link_to 'Show', link %></td>
-      </tr>
-      <div class="btn-group">
-        <a class="btn btn-default btn-sm" href="<%= link.url %>">Visit Link</a>
+      <div class="btn-group" style="padding-bottom: 10px;  padding-left: 10px;">
         <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
           <span class="glyphicon glyphicon-chevron-up"></span>
           Upvote
           <%= link.get_upvotes.size %>
         <% end %>
         <%= link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
-          <span class="glyphicon glyphicon-chevron-down">
+          <span class="glyphicon glyphicon-chevron-down"></span>
           Downvote
           <%= link.get_downvotes.size %>
         <% end %>
       </div>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Link', new_link_path %>
+    </div>
+  <% end %>
+</div>
