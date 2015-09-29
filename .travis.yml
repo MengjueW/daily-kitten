@@ -1,4 +1,4 @@
 language: ruby
 rvm:
   - 2.2.2
-script: cd app && rake
+script: cd app && bundle install && rake
