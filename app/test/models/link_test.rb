@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class LinkTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should save link" do
+    link = Link.new
+    assert link.save
+  end
 end

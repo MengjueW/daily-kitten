@@ -2,7 +2,12 @@ require 'test_helper'
 
 class LinksControllerTest < ActionController::TestCase
   setup do
-    @link = links(:one)
+    @user = users(:one_user)
+    @comment = comments(:one_comment)
+    @comment.user = @user
+    @link = links(:one_link)
+    @link.comments << @comment
+    sign_in @user          # sign_in(resource)
   end
 
   test "should get index" do
