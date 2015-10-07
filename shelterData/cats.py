@@ -46,6 +46,20 @@ def catShelterGenerator():
     catNames = catNameScraper()
     print random.choice(catNames), random.choice(shelterType), location
 
-for i in range(10):
-    catShelterGenerator()
+# for i in range(10):
+    # catShelterGenerator()
 
+def catPics():
+    catPicUrl = "http://www.shutterstock.com/s/cat/search.html"
+    
+    page = urllib2.urlopen(catPicUrl).read()
+    soup = BeautifulSoup(page, "lxml")
+
+    catDivs = soup.find("div", {"id": "cat_container"})
+    # catCells = catDivs.findAll("div", {"class": "mosaic_cell"})
+    imgs = catDivs.findAll("img")
+    # for cell in catCells:
+        # print cell
+
+    for img in imgs:
+        print img['src']
