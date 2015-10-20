@@ -10,6 +10,7 @@ class CatsController < ApplicationController
   # GET /cats/1
   # GET /cats/1.json
   def show
+    @pictures = @cat.pictures
   end
 
   # GET /cats/new
@@ -28,6 +29,11 @@ class CatsController < ApplicationController
 
     respond_to do |format|
       if @cat.save
+        if params[:images]
+          params[:images].each { |image|
+            @cat.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @cat, notice: 'Cat was successfully created.' }
         format.json { render :show, status: :created, location: @cat }
       else
@@ -42,6 +48,11 @@ class CatsController < ApplicationController
   def update
     respond_to do |format|
       if @cat.update(cat_params)
+        if params[:images]
+          params[:images].each { |image|
+            @cat.pictures.create(image: image)
+          }
+        end
         format.html { redirect_to @cat, notice: 'Cat was successfully updated.' }
         format.json { render :show, status: :ok, location: @cat }
       else
@@ -69,6 +80,6 @@ class CatsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cat_params
-      params.require(:cat).permit(:name, :age, :breed, :sex, :description)
+      params.require(:cat).permit(:name, :age, :breed, :sex, :description, :pictures)
     end
 end

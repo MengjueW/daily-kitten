@@ -27,3 +27,24 @@
 
 <%= link_to 'Edit', edit_cat_path(@cat) %> |
 <%= link_to 'Back', cats_path %>
+
+<h2>Pictures</h2>
+
+<div class="row">
+  <ul class="thumbnails files">
+    <% unless @pictures.empty? %>
+      <% @pictures.each do |pic| %>
+        <li class="span3" id="picture_<%= pic.id %>">
+          <div class="thumbnail">
+            <%= image_tag pic.image.url(:medium) %>
+            <div class="caption">
+              <p style="text-align: center;">
+                <%= link_to "Delete picture", pic, :data => { :confirm => "Are you sure?" }, :method => :delete %>
+              </p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

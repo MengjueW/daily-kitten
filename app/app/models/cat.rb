@@ -18,4 +18,5 @@ class Cat < ActiveRecord::Base
     :savannah, :scottish_fold, :selkirk_rex, :siamese_cat, :siberian, :singapura, :snowshoe, :somali, :sphynx,
     :tonkinese, :turkish_angora, :turkish_van]
   validates :age, :numericality => { :greater_than_or_equal_to => 0, :less_than_or_equal_to => 30 }
+  has_many :pictures, :dependent => :destroy
 end
