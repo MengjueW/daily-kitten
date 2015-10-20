@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Cats</h1>
+<h1>Searching Cats</h1>
 
 <table>
   <thead>
@@ -27,7 +27,7 @@
               <td>
                 <div class="thumbnail">
                   <% if cat.pictures.first %>
-                    <%= link_to image_tag(cat.pictures.first.image.url(:thumb)), cat_path(cat) %>
+                    <%= link_to image_tag(cat.pictures.first.image.url(:thumb, :class => 'img-responsive')), cat_path(cat), class: "thumbnail" %>
                   <% else %>
                     N/A
                   <% end %>
@@ -42,16 +42,3 @@
       <% end %>
   </tbody>
 </table>
-
-<br>
-<div class="row">
-  <% @cats.each do |cat| %>
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-      <% if cat.pictures.first %>
-<%= link_to image_tag(cat.pictures.first.image.url(:thumb, :class => 'img-responsive')), cat_path(cat), class: "thumbnail" %>
-      <% else %>
-        N/A
-      <% end %>
-    </div>
-  <% end %>
-</div>

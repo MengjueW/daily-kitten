@@ -1,4 +1,5 @@
 class Cat < ActiveRecord::Base
+  searchkick
   extend Enumerize
   enumerize :sex, in: [:male, :female]
   enumerize :breed, in: [:abyssinian, :american_bobtail, :american_curl, :american_shorthair, :american_wirehair,

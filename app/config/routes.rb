@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :pictures
-  resources :cats
+  resources :cats do
+    collection do
+      get 'search'
+    end
+    resources :pictures, except: [:show, :index]
+  end
   resources :comments
   devise_for :users
   resources :links do

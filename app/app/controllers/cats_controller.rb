@@ -7,6 +7,14 @@ class CatsController < ApplicationController
     @cats = Cat.all
   end
 
+  def search
+    if params[:search].present?
+      @cats = Cat.search(params[:search])
+    else
+      @cats = Cat.all
+    end
+  end
+
   # GET /cats/1
   # GET /cats/1.json
   def show
