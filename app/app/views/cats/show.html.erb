@@ -1,50 +1,84 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-8">
 
-<p>
-  <strong>Name:</strong>
-  <%= @cat.name %>
-</p>
+        <div id="owl">
+          <% unless @pictures.empty? %>
+            <% @pictures.each do |pic| %>
+              <div class="item center-block">
+                <%= image_tag pic.image.url(:medium), class: "thumbnail" %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
 
-<p>
-  <strong>Age:</strong>
-  <%= @cat.age %>
-</p>
+        <div class="btn-group" style="padding-bottom: 20px;  padding-top: 20px;">
+          <%= link_to like_cat_path(@cat), method: :put, class: "btn btn-default btn-sm" do %>
+            <span class="glyphicon glyphicon-chevron-up"></span>
+            Upvote
+            <%= @cat.get_upvotes.size %>
+          <% end %>
+          <%= link_to dislike_cat_path(@cat), method: :put, class: "btn btn-default btn-sm" do %>
+            <span class="glyphicon glyphicon-chevron-down">
+            Downvote
+            <%= @cat.get_downvotes.size %>
+          <% end %>
+        </div>
 
-<p>
-  <strong>Breed:</strong>
-  <%= @cat.breed %>
-</p>
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td><strong>Name:</strong></td>
+                <td><%= @cat.name %></td>
+              </tr>
+              <tr>
+                <td><strong>Age:</strong></td>
+                <td><%= @cat.age %></td>
+              </tr>
+              <tr>
+                <td><strong>Breed:</strong></td>
+                <td><%= @cat.breed.humanize %></td>
+              </tr>
+              <tr>
+                <td><strong>Sex:</strong></td>
+                <td><%= @cat.sex %></td>
+              </tr>
+              <tr>
+                <td><strong>Description:</strong></td>
+                <td><%= @cat.description %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h3 class="comments_title">
+          <%= @cat.comments.count %> Comments
+        </h3>
 
-<p>
-  <strong>Sex:</strong>
-  <%= @cat.sex %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @cat.description %>
-</p>
-
-<%= link_to 'Edit', edit_cat_path(@cat) %> |
-<%= link_to 'Back', cats_path %>
-
-<h2>Pictures</h2>
-
-<div class="row">
-  <ul class="thumbnails files">
-    <% unless @pictures.empty? %>
-      <% @pictures.each do |pic| %>
-        <li class="span3" id="picture_<%= pic.id %>">
-          <div class="thumbnail">
-            <%= image_tag pic.image.url(:medium) %>
-            <div class="caption">
-              <p style="text-align: center;">
-                <%= link_to "Delete picture", pic, :data => { :confirm => "Are you sure?" }, :method => :delete %>
-              </p>
-            </div>
+        <div id="comments">
+          <%= render :partial => @cat.comments %>
+        </div>
+        <%= simple_form_for [@cat, Comment.new]  do |f| %>
+          <div class="field">
+            <%= f.text_area :body, class: "form-control" %>
           </div>
-        </li>
-      <% end %>
-    <% end %>
-  </ul>
+          <br>
+          <%= f.submit "Add Comment", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script>
+$(document).ready(function(){
+ $('#owl').owlCarousel({
+      autoPlay: 3000, //Set AutoPlay to 3 seconds
+
+      items : 2,
+      itemsDesktop : [1199,3],
+      itemsDesktopSmall : [979,3]
+ });
+});
+</script>

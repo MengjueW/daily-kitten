@@ -4,7 +4,12 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
+    member do
+      put "like", to: "cats#upvote"
+      put "dislike", to: "cats#downvote"
+    end
     resources :pictures, except: [:show, :index]
+    resources :comments, except: [:index]
   end
   resources :comments
   devise_for :users

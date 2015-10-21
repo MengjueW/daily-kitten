@@ -1,5 +1,6 @@
 class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /cats
   # GET /cats.json
@@ -78,6 +79,18 @@ class CatsController < ApplicationController
       format.html { redirect_to cats_url, notice: 'Cat was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @cat = Cat.find(params[:id])
+    @cat.upvote_by current_user
+      redirect_to :back
+  end
+
+  def downvote
+    @cat = Cat.find(params[:id])
+    @cat.downvote_by current_user
+      redirect_to :back
   end
 
   private
