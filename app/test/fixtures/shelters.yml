@@ -1,11 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  url: MyString
-  city: MyString
-
-two:
-  title: MyString
-  url: MyString
-  city: MyString
+one_shelter:
+  email: test002@test.com
+  name: test002
+  encrypted_password: test002@test.com
