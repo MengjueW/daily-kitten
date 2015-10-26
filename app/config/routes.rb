@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  #devise_for :shelters
-  devise_for :shelters, :controllers => { registrations: 'shelters/registrations'}
-  get 'shelters/index'
+  devise_for :shelters
 
-  get 'shelters/new'
+  PagesController.action_methods.each do |action|
+    get "/#{action}", to: "pages##{action}", as: "#{action}_page"
+  end
 
   resources :pictures
   resources :cats do
