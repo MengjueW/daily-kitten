@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #devise_for :shelters
+  devise_for :shelters, :controllers => { registrations: 'shelters/registrations'}
   get 'shelters/index'
 
   get 'shelters/new'

@@ -9,7 +9,7 @@ class SheltersController < ApplicationController
   def show
   end
 def create
-    @shelter = Shelter.new(params.require(:shelter).permit(:title, :city, :url))
+    @shelter = Shelter.new(params.require(:shelter).permit(:name, :title, :city, :url))
 
     respond_to do |format|
       if @shelter.save
