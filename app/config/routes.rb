@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :shelters
   resources :pictures
   resources :cats do
     collection do
       get 'search'
+      get 'present'
     end
     member do
       put "like", to: "cats#upvote"

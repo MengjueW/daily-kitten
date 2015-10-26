@@ -22,4 +22,5 @@ class Cat < ActiveRecord::Base
   acts_as_votable
   has_many :comments
   has_many :pictures, :dependent => :destroy
+  belongs_to :shelter
 end
