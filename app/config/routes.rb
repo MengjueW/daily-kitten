@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  PagesController.action_methods.each do |action|
-    get "/sign_up_option", to: "pages#show", as: "show_page"
-  end
+  get "/sign_up_option", to: "pages#show", as: "show_page"
+  get "/sign_in_option", to: "pages#signin", as: "sign_in_option"
 
   resources :pictures
   resources :cats do
@@ -31,7 +30,13 @@ Rails.application.routes.draw do
   get '/homepage', to: 'homepage#show', as: "show_homepage"
 
   resources :shelters
-  root to: "cats#index"
+  authenticated :user do
+    root :to => "cats#index", :as => :authenticated_user_root
+  end
+  authenticated :shelter do
+    root :to => "dashboard#show", :as => :authenticated_shelter_root
+  end
+  root to: "pages#signin"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
