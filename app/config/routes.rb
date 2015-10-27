@@ -27,13 +27,11 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-  #DashboardController.ets do ||
   get '/dashboard', to: 'dashboard#show', as: "show_dashboard"
-  #end
-  #resource :dashboard, :controller => :dashboard
+  get '/homepage', to: 'homepage#show', as: "show_homepage"
 
   resources :shelters
-  root to: "links#index"
+  root to: "homepage#show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

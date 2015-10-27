@@ -17,3 +17,6 @@
 //= require turbolinks
 //= require_tree .
 //= require owl.carousel
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown

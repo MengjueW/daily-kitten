@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Kitten</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.png' %>
+
+</head>
+<style>
+video {
+position: fixed;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: -100;
+-webkit-transform: translateX(-50%) translateY(-50%);
+transform: translateX(-50%) translateY(-50%);
+background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg') no-repeat; background-size: cover;  -webkit-transition: 1s opacity; transition: 1s opacity; }
+
+</style>
+</head>
+<body>
+<video autoplay="" loop="" id="bgvid" class="" controls muted>
+<source src="<%= asset_path("cat.webm") %>" type="video/webm">
+<source src="<%= asset_path("cat.mp4") %>" type="video/mp4">
+<source src="<%= asset_path("cat.ogv") %>" type="video/ogg">
+</video>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title">
+                    Sign In</p>
+                <%= yield %>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body></html>
