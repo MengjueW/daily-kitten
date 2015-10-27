@@ -2,9 +2,16 @@
 
     <form class="form-signin">
         <h1 class="form-signin-heading text-muted">LOG IN</h1>
-<%= link_to 'ADOPTOR LOG IN', new_user_session_path, :class => "btn btn-lg btn-primary btn-block" %>
+<%= link_to 'ADOPTER LOG IN', new_user_session_path, :class => "btn btn-lg btn-primary btn-block" %>
 
 <%= link_to 'SHELTER LOG IN', new_shelter_session_path, :class => "btn btn-lg btn-primary btn-block" %>
+    </form>
+    
+    <form class="form-signup">
+        <h1 class="form-signup-heading text-muted">JOIN US!</h1>
+<%= link_to 'ADOPTER SIGN UP', new_user_registration_path, :class => "btn btn-lg btn-primary btn-block" %>
+
+<%= link_to 'SHELTER SIGN UP', new_shelter_registration_path, :class => "btn btn-lg btn-primary btn-block" %>
     </form>
 
 </div>
