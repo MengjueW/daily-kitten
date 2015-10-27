@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
+  resource :dashboard, :controller => :dashboard
 
   root to: "links#index"
   # The priority is based upon order of creation: first created -> highest priority.
