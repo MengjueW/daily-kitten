@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :shelters
+
+  PagesController.action_methods.each do |action|
+    get "/#{action}", to: "pages##{action}", as: "#{action}_page"
+  end
+
   resources :pictures
   resources :cats do
     collection do
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
   end
   resource :dashboard, :controller => :dashboard
 
+  resources :shelters
   root to: "links#index"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
