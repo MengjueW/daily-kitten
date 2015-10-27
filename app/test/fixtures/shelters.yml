@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one_shelter:
+  email: test002@test.com
+  name: test002
+  encrypted_password: test002@test.com
