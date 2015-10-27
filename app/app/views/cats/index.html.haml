@@ -1,0 +1,8 @@
+#cats.transitions-enabled
+  - @cats.each do |cat|
+    - cat.pictures.each do |pic|
+      .box.panel.panel-default
+        = link_to (image_tag(pic.image.url(:origin))), cat
+        %h2= link_to cat.name, cat
+        %p.user
+          =cat.description

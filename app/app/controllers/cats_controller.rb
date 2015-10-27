@@ -2,11 +2,12 @@ class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
   #before_filter :authenticate_user!, except: [:index, :show]
   before_filter :authenticate_shelter!, except: [:index, :show]
+  layout 'cat_pins', only: [:index]
 
   # GET /cats
   # GET /cats.json
   def index
-    @cats = current_shelter.cats.all
+    @cats = Cat.all
   end
 
   def search
@@ -18,7 +19,7 @@ class CatsController < ApplicationController
   end
 
   def present
-    @cats = Cat.all
+    @cats = current_shelter.cats.all
   end
 
   # GET /cats/1
