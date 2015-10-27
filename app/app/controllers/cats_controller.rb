@@ -34,6 +34,7 @@ class CatsController < ApplicationController
 
   # GET /cats/1/edit
   def edit
+    current_shelter.cats.find(params[:id])
   end
 
   # POST /cats
@@ -80,6 +81,7 @@ class CatsController < ApplicationController
   # DELETE /cats/1
   # DELETE /cats/1.json
   def destroy
+    @cat = current_shelter.cats.find(params[:id])
     @cat.destroy
     respond_to do |format|
       format.html { redirect_to cats_url, notice: 'Cat was successfully destroyed.' }

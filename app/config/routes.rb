@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
   resources :comments
   devise_for :users
+  devise_for :shelters
   resources :links do
     member do
       put "like", to: "links#upvote"
@@ -26,7 +27,10 @@ Rails.application.routes.draw do
     end
     resources :comments
   end
-  resource :dashboard, :controller => :dashboard
+  #DashboardController.ets do ||
+  get '/dashboard', to: 'dashboard#show', as: "show_dashboard"
+  #end
+  #resource :dashboard, :controller => :dashboard
 
   resources :shelters
   root to: "links#index"
