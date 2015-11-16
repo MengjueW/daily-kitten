@@ -55,6 +55,8 @@
                 <td><strong>Contact Shelter!</strong></td>
                 <td><%= @shelter.phone_number %></td>
               </tr>
+              <%= link_to "Send an Application", :root, class: "btn btn-primary" %>
+              </tr>
               <% end %>
             </tbody>
           </table>
@@ -72,6 +74,11 @@
           </div>
           <br>
           <%= f.submit "Add Comment", class: "btn btn-primary" %>
+        <% end %>
+        <% if shelter_signed_in? %>
+        <%= link_to "Back", :show_dashboard, class: "btn btn-primary" %>
+        <% elsif user_signed_in? %>
+        <%= link_to "Back", :root, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
