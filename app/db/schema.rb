@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116025747) do
+ActiveRecord::Schema.define(version: 20151116201515) do
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 20151116025747) do
     t.string   "name"
     t.string   "city"
     t.string   "phone_number"
+    t.string   "street_number"
   end
 
   add_index "shelters", ["email"], name: "index_shelters_on_email", unique: true
@@ -114,6 +115,11 @@ ActiveRecord::Schema.define(version: 20151116025747) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "name"
+    t.string   "zipcode"
+    t.string   "state"
+    t.string   "city"
+    t.string   "street_number"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

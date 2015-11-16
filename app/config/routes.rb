@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :comments
   devise_for :users
   devise_for :shelters
+  resources :shelters, only: [:index]
   resources :links do
     member do
       put "like", to: "links#upvote"

@@ -52,9 +52,16 @@
               
               <% if user_signed_in? %>
               <tr>
-                <td><strong>Contact Shelter!</strong></td>
-                <td><%= @shelter.phone_number %></td>
+                <td><strong>Location: </strong></td>
+                <td><%= @shelter.street_number %>, <%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zipcode %></td>
               </tr>
+              <tr>
+                <td><strong>Contact Shelter!</strong></td>
+                <td><%= link_to @shelter.name, @shelter.phone_number %></td>
+              </tr>
+              <tr>
+                <td><strong>Distance</strong></td>
+                <td><%= @user.zipcode %></td>
               <%= link_to "Send an Application", :root, class: "btn btn-primary" %>
               </tr>
               <% end %>
