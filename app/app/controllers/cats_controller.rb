@@ -92,7 +92,7 @@ class CatsController < ApplicationController
     @cat = current_shelter.cats.find(params[:id])
     @cat.destroy
     respond_to do |format|
-      format.html { redirect_to cats_url, notice: 'Cat was successfully destroyed.' }
+      format.html { redirect_to show_dashboard_path, notice: 'Cat was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
