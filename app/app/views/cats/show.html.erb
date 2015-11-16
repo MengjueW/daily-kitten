@@ -49,6 +49,13 @@
                 <td><strong>Description:</strong></td>
                 <td><%= @cat.description %></td>
               </tr>
+              
+              <% if user_signed_in? %>
+              <tr>
+                <td><strong>Contact Shelter!</strong></td>
+                <td><%= @shelter.phone_number %></td>
+              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>

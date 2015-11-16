@@ -21,8 +21,8 @@
                     <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
                   </p>
               </li>
-              <li><%= link_to 'Account', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to 'Account', edit_shelter_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_shelter_session_path, :method => :delete %></li>
             </ul>
                 <% end %>
           <% elsif user_signed_in? -%>
@@ -34,8 +34,8 @@
                     <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
                   </p>
               </li>
-              <li><%= link_to 'Account', edit_user_registration_path %></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to 'Account', edit_shelter_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_shelter_session_path, :method => :delete %></li>
             </ul>
                 <% end %>
           <% else -%>
