@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :comments
   devise_for :users
   devise_for :shelters
+  resources :shelters, only: [:index]
   resources :links do
     member do
       put "like", to: "links#upvote"
@@ -28,7 +29,8 @@ Rails.application.routes.draw do
   end
   get '/dashboard', to: 'dashboard#show', as: "show_dashboard"
   get '/homepage', to: 'homepage#show', as: "show_homepage"
-
+  get '/userdashboard', to: 'userdashboard#show', as: "show_userdashboard"
+  
   resources :shelters
   authenticated :user do
     root :to => "cats#index", :as => :authenticated_user_root

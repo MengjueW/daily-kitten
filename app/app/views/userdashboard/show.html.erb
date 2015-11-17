@@ -1,0 +1,23 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+            <a href="#"><%= @user.name %></a>
+            <a href="#">Starred Cats</a>
+            <a href="#">Applications</a>
+            <%= link_to "Back to Daily Kitten", :root %>
+            <%= link_to 'Edit Account', edit_user_registration_path %>
+        </li>
+    </ul>
+</div>
+<!-- /#sidebar-wrapper -->
+
+<!-- Page Content -->
+<div id="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+            <h2 class="sub-header">Welcome <%= @user.name %>!</h2>
+            </div>
+        </div>
+    </div>
+</div>

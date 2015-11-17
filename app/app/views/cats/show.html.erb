@@ -49,6 +49,22 @@
                 <td><strong>Description:</strong></td>
                 <td><%= @cat.description %></td>
               </tr>
+              
+              <% if user_signed_in? %>
+              <tr>
+                <td><strong>Location: </strong></td>
+                <td><%= @shelter.street_number %>, <%= @shelter.city %>, <%= @shelter.state %>, <%= @shelter.zipcode %></td>
+              </tr>
+              <tr>
+                <td><strong>Contact Shelter!</strong></td>
+                <td><%= link_to @shelter.name, @shelter.phone_number %></td>
+              </tr>
+              <tr>
+                <td><strong>Distance</strong></td>
+                <td><%= @user.zipcode %></td>
+              <%= link_to "Send an Application", :root, class: "btn btn-primary" %>
+              </tr>
+              <% end %>
             </tbody>
           </table>
         </div>
@@ -65,6 +81,11 @@
           </div>
           <br>
           <%= f.submit "Add Comment", class: "btn btn-primary" %>
+        <% end %>
+        <% if shelter_signed_in? %>
+        <%= link_to "Back", :show_dashboard, class: "btn btn-primary" %>
+        <% elsif user_signed_in? %>
+        <%= link_to "Back", :root, class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>

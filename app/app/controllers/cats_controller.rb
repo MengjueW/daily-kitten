@@ -24,12 +24,19 @@ class CatsController < ApplicationController
 
   # GET /cats/1
   # GET /cats/1.json
+  
   def show
+    if shelter_signed_in?
+      @shelter = current_shelter
+    else
+      @shelter = @cat.shelter
+    end
     @pictures = @cat.pictures
   end
 
   # GET /cats/new
   def new
+    @shelter = current_shelter
     @cat = Cat.new
   end
 
@@ -85,7 +92,7 @@ class CatsController < ApplicationController
     @cat = current_shelter.cats.find(params[:id])
     @cat.destroy
     respond_to do |format|
-      format.html { redirect_to cats_url, notice: 'Cat was successfully destroyed.' }
+      format.html { redirect_to show_dashboard_path, notice: 'Cat was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
