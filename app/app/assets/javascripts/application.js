@@ -13,5 +13,10 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require jquery_ujs
+//= require masonry/jquery.masonry
 //= require turbolinks
 //= require_tree .
+//= require owl.carousel
+//= require bootstrap-select
+//= require bootstrap/alert
+//= require bootstrap/dropdown

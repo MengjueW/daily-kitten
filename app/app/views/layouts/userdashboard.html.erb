@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Kitten</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.png' %>
+</head>
+<body>
+  <header class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <div id="logo" class="navbar-brand">Daily Kitten</div>
+        <nav class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav pull-right">
+              <li>
+                <%= form_tag search_cats_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search], class: "form-control" %>
+                    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+                  </p>
+                <% end %>
+              </li>
+              <li><%= link_to 'Account', show_userdashboard_path %></li>
+              <li><%= link_to 'Sign out', destroy_user_session_path, :method => :delete %></li>
+            </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <div id="wrapper">
+    <%= yield %>
+  </div>
+</body>
+</html>

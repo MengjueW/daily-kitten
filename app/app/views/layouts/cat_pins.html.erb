@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Kitten</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header class="navbar navbar-default" role="navigation">
+    <div class="navbar-inner">
+      <div class="container">
+        <div id="logo" class="navbar-brand">Daily Kitten</div>
+        <nav class="collapse navbar-collapse navbar-ex1-collapse">
+          <% if shelter_signed_in? -%>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= form_tag search_cats_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search], class: "form-control" %>
+                    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+                  </p>
+              </li>
+              <li><%= link_to 'Account', edit_shelter_registration_path %></li>
+              <li><%= link_to 'Sign out', destroy_shelter_session_path, :method => :delete %></li>
+            </ul>
+                <% end %>
+          <% elsif user_signed_in? -%>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= form_tag search_cats_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search], class: "form-control" %>
+                    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+                  </p>
+              </li>
+              <li><%= link_to 'Account', show_userdashboard_path %></li>
+              <li><%= link_to 'Sign out', destroy_shelter_session_path, :method => :delete %></li>
+            </ul>
+                <% end %>
+          <% else -%>
+            <ul class="nav navbar-nav pull-right">
+              <li>
+                <%= form_tag search_cats_path, method: :get, class: "navbar-form navbar-right", role: "search" do %>
+                  <p>
+                    <%= text_field_tag :search, params[:search], class: "form-control" %>
+                    <%= submit_tag "Search", name: nil, class: "btn btn-default" %>
+                  </p>
+                <% end %>
+              </li>
+              <li><%= link_to 'Sign up', show_page_path %></li>
+              <li><%= link_to 'Sign in', new_user_session_path %></li>
+            </ul>
+          <% end -%>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <%= yield %>
+
+  </div>
+
+</body>
+</html>

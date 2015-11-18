@@ -23,7 +23,7 @@ Installation
 
 * Download the repo
 
-* Using a browser, go to `http://localhost:3000` and you'll see the
+* Rails start server, go to `http://localhost:3000` and you'll see the
 
 Modules
 -------
